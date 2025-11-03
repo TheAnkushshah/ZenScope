@@ -45,3 +45,6 @@ zenscope-backend/.env
 zenscope-backend/node_modules/
 zenscope-backend/.modal*
 zenscope-backend/brca1_analysis_plot.png
+
+# Binary files (e.g., Node.js native modules)
+*.node
