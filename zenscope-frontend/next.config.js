@@ -1,6 +1,6 @@
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
- * This is especially useful for Docker or Vercel builds.
+ * Useful for Docker or Vercel builds.
  */
 import "./src/env.js";
 
@@ -8,14 +8,13 @@ import "./src/env.js";
 const config = {
   reactStrictMode: false,
   eslint: {
-    ignoreDuringBuilds: true, // ✅ Prevents ESLint issues from failing Vercel builds
+    ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // ✅ (Optional) Skip TS build errors if needed on Vercel
+    ignoreBuildErrors: true,
   },
   experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ["react", "next"],
+    optimizePackageImports: ["react", "next"], // ✅ removed optimizeCss to avoid critters dependency
   },
 };
 
