@@ -1,5 +1,7 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import tseslint from "typescript-eslint";
+// @ts-ignore: Missing type declarations for '@next/eslint-plugin-next'
+import nextPlugin from "@next/eslint-plugin-next";
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
@@ -9,7 +11,7 @@ export default tseslint.config(
   {
     ignores: [".next"],
   },
-  ...compat.extends("next/core-web-vitals"),
+  ...compat.extends(nextPlugin.configs["core-web-vitals"]),
   {
     files: ["**/*.ts", "**/*.tsx"],
     extends: [
@@ -34,15 +36,14 @@ export default tseslint.config(
         { checksVoidReturn: { attributes: false } },
       ],
     },
-  },
-  {
     linterOptions: {
       reportUnusedDisableDirectives: true,
     },
     languageOptions: {
       parserOptions: {
         projectService: true,
+        ecmaVersion: 2022, // ✅ Explicitly set ecmaVersion to avoid the “17 not assignable” error
       },
     },
-  },
+  }
 );
