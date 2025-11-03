@@ -9,7 +9,7 @@ const compat = new FlatCompat({
 
 export default tseslint.config(
   {
-    ignores: [".next"],
+    ignores: [".next", "node_modules", "dist"],
   },
   ...compat.extends(nextPlugin.configs["core-web-vitals"]),
   {
@@ -42,7 +42,7 @@ export default tseslint.config(
     languageOptions: {
       parserOptions: {
         projectService: true,
-        ecmaVersion: 2022, // ✅ Explicitly set ecmaVersion to avoid the “17 not assignable” error
+        ecmaVersion: 2022, // ✅ Prevents “17 not assignable” error
       },
     },
   }
